@@ -20,10 +20,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chat-app-tmok.onrender.com",
+    origin: [
+      "http://localhost:5173", // for local dev
+      "https://chat-app-lime-three.vercel.app" // for deployed frontend
+    ],
     credentials: true,
   })
 );
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
